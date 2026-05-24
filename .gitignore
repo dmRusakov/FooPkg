@@ -1,0 +1,9 @@
+# Editor/IDE
+.idea/
+.vscode/
+
+# agents
+.claude/
+.copilot/
+.grok/
+.codex/
