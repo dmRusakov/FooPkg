@@ -45,6 +45,7 @@ type Cell struct {
 	DepthUnits       *int       `db:"depth_units"      json:"depth_units,omitempty"                                                         `
 	HeightUnits      *int       `db:"height_units"     json:"height_units,omitempty"                                                        `
 	Status           string     `db:"status"           json:"status"           pg:"VARCHAR(1)" default:"'N'" index:"true"                   `
+	IsActive         bool       `db:"is_active"        json:"is_active"         default:"TRUE"                                             `
 	IsCanonical      bool       `db:"is_canonical"     json:"is_canonical"      default:"TRUE"                                              `
 	CreatedAt        time.Time  `db:"created_at"       json:"created_at"                                                                    `
 	UpdatedAt        time.Time  `db:"updated_at"       json:"updated_at"                                                                    `
@@ -60,6 +61,7 @@ type Feature struct {
 	Depth       *float64  `db:"depth"        json:"depth,omitempty"    pg:"NUMERIC(8,2)"                                               `
 	Geom        *string   `db:"geom"         json:"geom,omitempty"     pg:"GEOMETRY"   index:"gist"                                    `
 	Attrs       *string   `db:"attrs"        json:"attrs,omitempty"    pg:"JSONB"                                                      `
+	IsActive    bool      `db:"is_active"    json:"is_active"          default:"TRUE"                                                  `
 	IsCanonical bool      `db:"is_canonical" json:"is_canonical"       default:"TRUE"                                                  `
 	CreatedAt   time.Time `db:"created_at"   json:"created_at"                                                                         `
 }
