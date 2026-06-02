@@ -44,8 +44,8 @@ type Cell struct {
 	SoundingDatum    *int       `db:"sounding_datum"   json:"sounding_datum,omitempty"                                                      `
 	DepthUnits       *int       `db:"depth_units"      json:"depth_units,omitempty"                                                         `
 	HeightUnits      *int       `db:"height_units"     json:"height_units,omitempty"                                                        `
-	Status           string     `db:"status"           json:"status"           pg:"VARCHAR(1)" default:"'N'" index:"true"                   `
-	IsActive         bool       `db:"is_active"        json:"is_active"         default:"TRUE"                                             `
+	Status           string     `db:"status"           json:"status"            pg:"VARCHAR(1)" default:"'N'" index:"true"                  `
+	IsActive         bool       `db:"is_active"        json:"is_active"         default:"TRUE"                                              `
 	IsCanonical      bool       `db:"is_canonical"     json:"is_canonical"      default:"TRUE"                                              `
 	CreatedAt        time.Time  `db:"created_at"       json:"created_at"                                                                    `
 	UpdatedAt        time.Time  `db:"updated_at"       json:"updated_at"                                                                    `
@@ -54,7 +54,7 @@ type Cell struct {
 // Feature represents a single S-57 geographic or cartographic object extracted from an ENC cell layer.
 type Feature struct {
 	ID          uuid.UUID `db:"id"           json:"id"                                                                                 `
-	CellID      uuid.UUID `db:"cell_id"      json:"cell_id,omitempty"  index:"true"  fk:"cells.id:cascade"                             `
+	CellID      uuid.UUID `db:"cell_id"      json:"cell_id,omitempty"  index:"true"  fk:"cells(id):cascade"                            `
 	S57Code     string    `db:"s_57_code"    json:"s_57_code"          pg:"VARCHAR(10)" index:"true"                                   `
 	Lat         *float64  `db:"lat"          json:"lat,omitempty"      pg:"NUMERIC(11,7)" index:"true"                                 `
 	Lon         *float64  `db:"lon"          json:"lon,omitempty"      pg:"NUMERIC(11,7)" index:"true"                                 `
