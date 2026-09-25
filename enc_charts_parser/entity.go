@@ -30,6 +30,7 @@ type Cell struct {
 	Bbox             *string    `db:"bbox"             json:"bbox,omitempty"    pg:"GEOMETRY"   index:"gist"                                `
 	Lat              *float64   `db:"lat"              json:"lat,omitempty"     pg:"NUMERIC(11,7)" index:"true"                             `
 	Lon              *float64   `db:"lon"              json:"lon,omitempty"     pg:"NUMERIC(11,7)" index:"true"                             `
+	Sector           int        `db:"sector"           json:"sector"            pg:"INT"            index:"true"                            `
 	Edition          *int       `db:"edition"          json:"edition,omitempty"                                                             `
 	UpdateNumber     int        `db:"update_number"    json:"update_number"     default:"0"                                                 `
 	UpdateDate       *time.Time `db:"update_date"      json:"update_date,omitempty" pg:"DATE"                                               `
@@ -58,6 +59,7 @@ type Feature struct {
 	S57Code     string    `db:"s_57_code"    json:"s_57_code"          pg:"VARCHAR(10)" index:"true"                                   `
 	Lat         *float64  `db:"lat"          json:"lat,omitempty"      pg:"NUMERIC(11,7)" index:"true"                                 `
 	Lon         *float64  `db:"lon"          json:"lon,omitempty"      pg:"NUMERIC(11,7)" index:"true"                                 `
+	Sector      int       `db:"sector"       json:"sector"             pg:"INT"            index:"true"                                `
 	Depth       *float64  `db:"depth"        json:"depth,omitempty"    pg:"NUMERIC(8,2)"                                               `
 	Geom        *string   `db:"geom"         json:"geom,omitempty"     pg:"GEOMETRY"   index:"gist"                                    `
 	Attrs       *string   `db:"attrs"        json:"attrs,omitempty"    pg:"JSONB"                                                      `
